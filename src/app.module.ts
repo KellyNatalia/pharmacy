@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SuppliersModule } from './modules/suppliers/suppliers.module';
-
+import { ProductsModule } from './modules/products/products.module';  
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
@@ -21,7 +21,7 @@ import { SuppliersModule } from './modules/suppliers/suppliers.module';
         synchronize: false,
       })
     }),
-    SuppliersModule],
+    SuppliersModule, ProductsModule],
   controllers: [AppController],
   providers: [AppService],
 })
