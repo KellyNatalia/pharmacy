@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SuppliersModule } from './modules/suppliers/suppliers.module';
 <<<<<<< HEAD
-import { UsersModule } from './modules/suppliers/users/users.module';
+import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 
 =======

@@ -3,6 +3,7 @@ dotenv.config();
 import { DataSource } from 'typeorm';
 import { User } from './src/entities/user.entity';
 import { Supplier } from './src/entities/suppliers.entity';
+import { Product } from './src/entities/products.entity';
 
 dotenv.config();
 
@@ -13,6 +14,8 @@ export default new DataSource({
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  entities: [User, Supplier],
+  entities: [
+    './src/entities/*.entity.ts'
+  ],
   migrations: ['src/migrations/*.ts']
 });
