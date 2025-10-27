@@ -17,6 +17,11 @@ export class SuppliersController {
     return this.suppliersService.findOne(id);
   }
 
+  @Get(':id/productos')
+  getProducts(@Param('id') id: number) {
+  return this.suppliersService.getProductsBySupplier(id);
+  }
+
   @Post()
   create(@Body() supplierData: CreateSupplierDto) {
     return this.suppliersService.create(supplierData);
