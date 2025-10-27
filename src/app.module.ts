@@ -4,13 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SuppliersModule } from './modules/suppliers/suppliers.module';
-<<<<<<< HEAD
+import { ProductsModule } from './modules/products/products.module';  
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
-
-=======
-import { ProductsModule } from './modules/products/products.module';  
->>>>>>> adbe9d2cab446a832de6a917b0653eeb10ee1c16
+import { SalesModule } from './modules/sales/sales.module';
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
@@ -27,13 +24,12 @@ import { ProductsModule } from './modules/products/products.module';
         synchronize: false,
       })
     }),
-<<<<<<< HEAD
     UsersModule,
     AuthModule,
-    SuppliersModule],
-=======
-    SuppliersModule, ProductsModule],
->>>>>>> adbe9d2cab446a832de6a917b0653eeb10ee1c16
+    SuppliersModule,
+    ProductsModule,
+    SalesModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
