@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Product } from "./products.entity";
 
 @Entity('suppliers')
 export class Supplier {
@@ -16,4 +17,12 @@ export class Supplier {
 
     @Column(( { nullable: false } ))
     address: string;
+
+    @OneToMany(() => Product, product => product.proveedor)
+    productos: Product[];
+
+    @ManyToOne(() => Supplier, supplier => supplier.productos)
+    proveedor: Supplier;
+
+
 }
