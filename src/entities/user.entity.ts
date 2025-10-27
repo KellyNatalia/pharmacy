@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Sale } from "./sales.entity";
 
 export type Roles = 'admin' | 'user'
 
@@ -26,4 +27,8 @@ export class User {
 
     @Column({ default: RolesEnum.USER })
     role: Roles
+
+    @OneToMany(() => Sale, sale => sale.usuario)
+    ventas: Sale[];
+
 }
