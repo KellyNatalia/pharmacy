@@ -1,16 +1,21 @@
 import * as dotenv from 'dotenv';
-import { Supplier } from './src/entities/suppliers.entity';
+dotenv.config(); 
 import { DataSource } from 'typeorm';
+import { User } from './src/entities/user.entity';
+import { Supplier } from './src/entities/suppliers.entity';
+import { Product } from './src/entities/products.entity';
 
-dotenv.config()
+dotenv.config();
 
 export default new DataSource({
-    type: 'mysql',
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT),
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    entities: [Supplier],
-    migrations: [ './src/migrations/*.ts' ],
+  type: 'mysql',
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  entities: [
+    './src/entities/*.entity.ts'
+  ],
+  migrations: ['src/migrations/*.ts']
 });

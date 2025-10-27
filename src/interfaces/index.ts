@@ -1,1 +1,2 @@
-// export * from './suppliers.interface';
+export * from './ISuppliers';
+export * from './IUser';
