@@ -30,5 +30,4 @@ export class User {
 
     @OneToMany(() => Sale, sale => sale.usuario)
     ventas: Sale[];
-
 }

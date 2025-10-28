@@ -1,23 +1,176 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Pharmacy Management System
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Sistema de gestión para farmacias desarrollado con NestJS, TypeORM y MySQL.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
+## Descripción
+
+Este proyecto es una API RESTful que permite gestionar los aspectos fundamentales de una farmacia, incluyendo:
+- Gestión de usuarios y autenticación
+- Inventario de productos
+- Gestión de proveedores
+- Registro de ventas
+- Control de stock
+
+## Tecnologías Utilizadas
+
+- **Backend**: NestJS (Node.js framework)
+- **Base de datos**: MySQL
+- **ORM**: TypeORM
+- **Autenticación**: JWT (JSON Web Tokens)
+- **Documentación**: Swagger/OpenAPI 3.0
+
+## Requisitos Previos
+
+- Node.js (v14 o superior)
+- MySQL (v5.7 o superior)
+- npm o yarn
+
+## Instalación
+
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/KellyNatalia/pharmacy.git
+cd pharmacy
+```
+
+2. Instalar dependencias:
+```bash
+npm install
+```
+
+3. Configurar variables de entorno:
+   - Crear archivo `.env` en la raíz del proyecto
+   - Copiar el contenido de `.env.example` y ajustar los valores
+
+4. Configurar la base de datos:
+```bash
+# Ejecutar migraciones
+npm run typeorm migration:run
+```
+
+## Estructura del Proyecto
+
+```
+pharmacy/
+├── src/
+│   ├── common/         # Pipes y utilidades comunes
+│   ├── dto/           # Data Transfer Objects
+│   ├── entities/      # Entidades de la base de datos
+│   ├── interfaces/    # Interfaces TypeScript
+│   ├── migrations/    # Migraciones de base de datos
+│   └── modules/       # Módulos de la aplicación
+│       ├── auth/      # Autenticación y autorización
+│       ├── products/  # Gestión de productos
+│       ├── sales/     # Gestión de ventas
+│       ├── suppliers/ # Gestión de proveedores
+│       └── users/     # Gestión de usuarios
+├── docs/             # Documentación (Swagger)
+└── test/            # Archivos de pruebas
+```
+
+## Funcionalidades Principales
+
+### 1. Autenticación y Usuarios
+- Registro de usuarios
+- Login con JWT
+- Roles: admin y user
+- Gestión de perfiles
+
+### 2. Gestión de Productos
+- CRUD completo de productos
+- Búsqueda por nombre
+- Control de stock
+- Asociación con proveedores
+
+### 3. Gestión de Proveedores
+- CRUD completo de proveedores
+- Visualización de productos por proveedor
+- Información de contacto
+
+### 4. Sistema de Ventas
+- Registro de ventas
+- Detalle de productos vendidos
+- Cálculo automático de totales
+- Actualización de stock
+
+## API Endpoints
+
+La documentación completa de la API está disponible en Swagger UI:
+```
+http://localhost:3000/api
+```
+
+### Principales endpoints:
+
+#### Autenticación
+- POST `/auth/register` - Registro de usuarios
+- POST `/auth/login` - Login de usuarios
+- GET `/auth/profile` - Perfil del usuario actual
+
+#### Usuarios
+- GET `/users` - Listar usuarios
+- GET `/users/:id` - Obtener usuario por ID
+- PUT `/users/:id` - Actualizar usuario
+- DELETE `/users/:id` - Eliminar usuario
+
+#### Productos
+- GET `/products` - Listar productos
+- POST `/products` - Crear producto
+- GET `/products/:id` - Obtener producto por ID
+- PUT `/products/:id` - Actualizar producto
+- GET `/products/by-name/:name` - Buscar producto por nombre
+
+#### Proveedores
+- GET `/suppliers` - Listar proveedores
+- POST `/suppliers` - Crear proveedor
+- GET `/suppliers/:id` - Obtener proveedor por ID
+- PUT `/suppliers/:id` - Actualizar proveedor
+- DELETE `/suppliers/:id` - Eliminar proveedor
+- GET `/suppliers/:id/productos` - Productos por proveedor
+
+#### Ventas
+- POST `/sales` - Registrar nueva venta
+
+## Scripts Disponibles
+
+```bash
+# Desarrollo
+npm run start:dev
+
+# Producción
+npm run start:prod
+
+# Pruebas
+npm run test
+
+# Migraciones
+npm run typeorm migration:generate src/migrations/NombreMigracion
+npm run typeorm migration:run
+```
+
+## Seguridad
+
+- Autenticación mediante JWT
+- Roles y permisos
+- Encriptación de contraseñas
+- Validación de datos con DTO
+- Protección de rutas sensibles
+
+## Contribución
+
+1. Fork el proyecto
+2. Crear una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abrir un Pull Request
+
+## Autor
+
+- Kelly Natalia - [GitHub](https://github.com/KellyNatalia)
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
