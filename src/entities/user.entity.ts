@@ -26,9 +26,11 @@ export class User {
     status: boolean;
 
     @Column({ default: RolesEnum.USER })
-    role: Roles
+    role: Roles;
 
     @OneToMany(() => Sale, sale => sale.usuario)
     ventas: Sale[];
+
+    
 
 }

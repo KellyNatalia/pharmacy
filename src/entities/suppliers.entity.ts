@@ -21,8 +21,6 @@ export class Supplier {
     @OneToMany(() => Product, product => product.proveedor)
     productos: Product[];
 
-    @ManyToOne(() => Supplier, supplier => supplier.productos)
-    proveedor: Supplier;
-
+  
 
 }
