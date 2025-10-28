@@ -10,7 +10,13 @@ import { AuthModule } from './modules/auth/auth.module';
 
 =======
 import { ProductsModule } from './modules/products/products.module';  
+<<<<<<< HEAD
 >>>>>>> adbe9d2cab446a832de6a917b0653eeb10ee1c16
+=======
+import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { SalesModule } from './modules/sales/sales.module';
+>>>>>>> c9250f2bdc5ec015dc138991fda014a693449aba
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
@@ -28,12 +34,21 @@ import { ProductsModule } from './modules/products/products.module';
       })
     }),
 <<<<<<< HEAD
+<<<<<<< HEAD
     UsersModule,
     AuthModule,
     SuppliersModule],
 =======
     SuppliersModule, ProductsModule],
 >>>>>>> adbe9d2cab446a832de6a917b0653eeb10ee1c16
+=======
+    UsersModule,
+    AuthModule,
+    SuppliersModule,
+    ProductsModule,
+    SalesModule,
+  ],
+>>>>>>> c9250f2bdc5ec015dc138991fda014a693449aba
   controllers: [AppController],
   providers: [AppService],
 })

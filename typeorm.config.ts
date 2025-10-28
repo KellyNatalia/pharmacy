@@ -13,6 +13,12 @@ export default new DataSource({
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+<<<<<<< HEAD
   entities: [User, Supplier],
+=======
+  entities: [
+    './src/entities/*.entity.ts'
+  ],
+>>>>>>> c9250f2bdc5ec015dc138991fda014a693449aba
   migrations: ['src/migrations/*.ts']
 });
