@@ -5,11 +5,7 @@ import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
 import { User } from 'src/entities/user.entity';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
-<<<<<<< HEAD
-import { UsersService } from '../suppliers/users/users.service';
-=======
 import { UsersService } from '../users/users.service';
->>>>>>> c9250f2bdc5ec015dc138991fda014a693449aba
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './jwt.strategy';
 
