@@ -1,6 +1,9 @@
 import * as dotenv from 'dotenv';
-dotenv.config(); 
 import { DataSource } from 'typeorm';
+import { User } from './src/entities/user.entity';
+import { Supplier } from './src/entities/suppliers.entity';
+import { Sale } from 'src/entities/sales.entity';
+import { Product } from 'src/entities/products.entity';
 
 dotenv.config();
 
