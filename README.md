@@ -93,12 +93,20 @@ pharmacy/
 - Cálculo automático de totales
 - Actualización de stock
 
-## API Endpoints
+## API Documentation
 
-La documentación completa de la API está disponible en Swagger UI:
+The API documentation is available through Swagger UI at:
+
+![alt text](image.png)
+
 ```
 http://localhost:3000/api
 ```
+
+You can access the API documentation in:
+- Swagger UI: http://localhost:3000/api
+- OpenAPI (JSON): http://localhost:3000/api-json
+- OpenAPI (YAML): http://localhost:3000/api-yaml
 
 ### Principales endpoints:
 
@@ -118,6 +126,7 @@ http://localhost:3000/api
 - POST `/products` - Crear producto
 - GET `/products/:id` - Obtener producto por ID
 - PUT `/products/:id` - Actualizar producto
+- DELETE `/products/:id` - Eliminar producto
 - GET `/products/by-name/:name` - Buscar producto por nombre
 
 #### Proveedores
@@ -129,7 +138,10 @@ http://localhost:3000/api
 - GET `/suppliers/:id/productos` - Productos por proveedor
 
 #### Ventas
+- GET `/sales` - Listar todas las ventas
 - POST `/sales` - Registrar nueva venta
+- GET `/sales/:id` - Obtener venta por ID
+- GET `/sales/:id/usuario` - Obtener ventas por usuario
 
 ## Scripts Disponibles
 
@@ -167,6 +179,8 @@ npm run typeorm migration:run
 ## Autor
 
 - Kelly Natalia - [GitHub](https://github.com/KellyNatalia)
+- Johana - [GitHub](https://github.com/Johanajive)
+- Melissa - [GitHub](https://github.com/MellyASD)
 
 ## Licencia
 
