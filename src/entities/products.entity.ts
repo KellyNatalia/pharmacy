@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Supplier } from "./suppliers.entity";
 
 @Entity()
 export class Product {
@@ -19,4 +20,7 @@ export class Product {
 
     @Column({ nullable: false, default: true })
     status: boolean;
+
+    @ManyToOne(() => Supplier, supplier => supplier.productos)
+    proveedor: Supplier;
 }

@@ -1,5 +1,5 @@
-import { IsBoolean, IsInt, IsNotEmpty, IsOptional } from "class-validator";
-import { CreateProductDTO } from "./create-product.dto";
+import { IsBoolean, IsInt, IsOptional } from "class-validator";
+import {CreateProductDTO } from "./create-product.dto";
 
 export class UpdateProductDTO {
     @IsOptional()

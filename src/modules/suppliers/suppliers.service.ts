@@ -16,11 +16,25 @@ export class SuppliersService {
     return this.suppliersRepository.find();
   }
 
-  async findOne(id: number) {
-    const suppliersFind = await this.suppliersRepository.findOneBy({ id });
-    if (!suppliersFind) throw new NotFoundException('Supplier not found');
-    return suppliersFind;
-  }
+ async findOne(id: number) {
+  const suppliersFind = await this.suppliersRepository.findOne({
+    where: { id },
+    relations: ['productos'],
+  });
+
+  if (!suppliersFind) throw new NotFoundException('Supplier not found');
+  return suppliersFind;
+}
+
+async getProductsBySupplier(id: number) {
+  const supplier = await this.suppliersRepository.findOne({
+    where: { id },
+    relations: ['productos'],
+  });
+
+  if (!supplier) throw new NotFoundException('Proveedor no encontrado');
+  return supplier.productos;
+}
 
   create(newSupplier: CreateSupplierDto) {
     const supplier = this.suppliersRepository.create(newSupplier);
