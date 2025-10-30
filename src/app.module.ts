@@ -8,7 +8,6 @@ import { UsersModule } from 'src/modules/users/users.module';
 import { ProductsModule } from './modules/products/products.module';  
 import { AuthModule } from './modules/auth/auth.module';
 import { SalesModule } from './modules/sales/sales.module';
-
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
@@ -18,7 +17,7 @@ import { SalesModule } from './modules/sales/sales.module';
         type: 'mysql',
         host: config.get<string>('DB_HOST'),
         port: config.get<number>('DB_PORT'),
-        username: config.get<string>('DB_USERNAME'),
+        username: config.get<string>('DB_USER'),
         password: config.get<string>('DB_PASSWORD'),
         database: config.get<string>('DB_NAME'),
         autoLoadEntities: true,
@@ -31,7 +30,6 @@ import { SalesModule } from './modules/sales/sales.module';
     ProductsModule,
     SalesModule,
   ],
-
   controllers: [AppController],
   providers: [AppService],
 })
