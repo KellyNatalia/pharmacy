@@ -26,7 +26,7 @@ export class SuppliersService {
   return suppliersFind;
 }
 
-async getProductsBySupplier(id: number) {
+/*async getProductsBySupplier(id: number) {
   const supplier = await this.suppliersRepository.findOne({
     where: { id },
     relations: ['productos'],
@@ -34,7 +34,7 @@ async getProductsBySupplier(id: number) {
 
   if (!supplier) throw new NotFoundException('Proveedor no encontrado');
   return supplier.productos;
-}
+}*/
 
   create(newSupplier: CreateSupplierDto) {
     const supplier = this.suppliersRepository.create(newSupplier);
