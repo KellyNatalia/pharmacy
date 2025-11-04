@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { SupplierNotFoundException } from 'src/common/exceptions/pharmacy.exception';
 import { CreateSupplierDto } from 'src/dto/create-suppliers.dto';
 import { UpdateSupplierDto } from 'src/dto/update-suppliers.dto';
 import { Supplier } from 'src/entities/suppliers.entity';
@@ -22,7 +23,7 @@ export class SuppliersService {
     relations: ['productos'],
   });
 
-  if (!suppliersFind) throw new NotFoundException('Supplier not found');
+  if (!suppliersFind) throw new SupplierNotFoundException(id);
   return suppliersFind;
 }
 

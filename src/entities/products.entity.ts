@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, JoinColumn } from "typeorm";
 import { Supplier } from "./suppliers.entity";
+import { Expose } from "class-transformer";
 
 @Entity()
 export class Product {
@@ -19,6 +20,7 @@ export class Product {
     stock: number;
 
     @Column({ nullable: false, default: true })
+    @Expose()
     status: boolean;
 
     @ManyToOne(() => Supplier, supplier => supplier.productos)
