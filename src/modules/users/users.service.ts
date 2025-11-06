@@ -5,7 +5,8 @@ import { User } from 'src/entities/user.entity';
 import { CreateUserDTO } from 'src/dto/create-user.dto';
 import { UpdateUserDTO } from 'src/dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
-
+import { instanceToPlain } from 'class-transformer';
+import { UsersModule } from './users.module';
 @Injectable()
 export class UsersService {
 
@@ -17,9 +18,11 @@ export class UsersService {
     /**
      * findAll: Método que devuelve todos los usuarios.
      */
-    findAll() {
-        return this.userRepo.find();
-    }
+    async findAll() {
+    const users = await this.userRepo.find();
+    return users.map((user) => instanceToPlain(user));
+  }
+
 
     /**
     * findOne: Método para obtener un usuario por ID.

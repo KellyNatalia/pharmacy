@@ -30,7 +30,6 @@ export class User {
     status: boolean;
 
     @Column({ default: RolesEnum.USER })
-    @Exclude()
     role: Roles
 
     @OneToMany(() => Sale, sale => sale.usuario)
