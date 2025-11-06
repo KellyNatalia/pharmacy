@@ -23,11 +23,11 @@ export class SuppliersController {
     return this.suppliersService.findOne(id);
   }
 
-  @Get(':id/productos')
+  /*@Get(':id/productos')
   @Roles(RolesEnum.ADMIN)
   getProducts(@Param('id') id: number) {
   return this.suppliersService.getProductsBySupplier(id);
-  }
+  }*/
 
   @Post()
   @Roles(RolesEnum.ADMIN)

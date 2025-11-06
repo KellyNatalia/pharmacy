@@ -14,7 +14,7 @@ export class ProductsController {
     constructor(private readonly productsService: ProductsService) { }
 
     @Get()
-    @Roles(RolesEnum.USER)
+    @Roles(RolesEnum.ADMIN)
     findAll() {
         return this.productsService.findAll();
     }

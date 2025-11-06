@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ProductNotFoundException } from 'src/common/exceptions/pharmacy.exception';
 import { CreateProductDTO } from 'src/dto/create-product.dto';
 import { UpdateProductDTO } from 'src/dto/update-product.dto';
 import { Product } from 'src/entities/products.entity';
-import { IProducts } from 'src/interfaces/IProducts';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -17,7 +17,7 @@ export class ProductsService {
 
     async findOne(id: number) {
         const productFind = await this.productsRepo.findOne({ where: { id }})
-        if (!productFind) throw new NotFoundException('Producto no encontrado')
+        if (!productFind) throw new ProductNotFoundException(id)
         return productFind
     }
 
@@ -43,7 +43,7 @@ export class ProductsService {
         const productFind = await this.productsRepo.findOne({ where: { id }})
 
         if (!productFind){
-            throw new NotFoundException("Producto no encontrado")
+            throw new ProductNotFoundException(id)
         }
 
         productFind.status = false;
