@@ -43,13 +43,13 @@ export class AuthService {
         const user = await this.userRepo.findOne({ where: { email: data.email } });
 
         if (!user) {
-            throw new UnauthorizedException('El correo es Invalido');
+            throw new UnauthorizedException('credenciales inválidas');
         }
 
         const isPasswordValid = await bcrypt.compare(data.password, user.password);
 
         if (!isPasswordValid) {
-            throw new UnauthorizedException('La Contraseña es Invalida');
+            throw new UnauthorizedException('credenciales inválidas');
         }
 
         const payloadToken = { sub: user.id, email: user.email, name: user.name, role: user.role };

@@ -1,4 +1,4 @@
-import { IsInt, IsNotEmpty } from "class-validator";
+import { IsInt, IsNotEmpty, IsPositive} from "class-validator";
 
 export class CreateProductDTO {
     @IsNotEmpty()
@@ -14,4 +14,9 @@ export class CreateProductDTO {
     @IsNotEmpty()
     @IsInt()
     stock: number;
+
+    @IsNotEmpty()
+    @IsInt()
+    @IsPositive()
+    supplierId: number;
 }

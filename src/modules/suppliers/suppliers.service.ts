@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { SupplierNotFoundException } from 'src/common/exceptions/pharmacy.exception';
 import { CreateSupplierDto } from 'src/dto/create-suppliers.dto';
 import { UpdateSupplierDto } from 'src/dto/update-suppliers.dto';
 import { Supplier } from 'src/entities/suppliers.entity';
@@ -22,11 +23,11 @@ export class SuppliersService {
     relations: ['productos'],
   });
 
-  if (!suppliersFind) throw new NotFoundException('Supplier not found');
+  if (!suppliersFind) throw new SupplierNotFoundException(id);
   return suppliersFind;
 }
 
-async getProductsBySupplier(id: number) {
+/*async getProductsBySupplier(id: number) {
   const supplier = await this.suppliersRepository.findOne({
     where: { id },
     relations: ['productos'],
@@ -34,7 +35,7 @@ async getProductsBySupplier(id: number) {
 
   if (!supplier) throw new NotFoundException('Proveedor no encontrado');
   return supplier.productos;
-}
+}*/
 
   create(newSupplier: CreateSupplierDto) {
     const supplier = this.suppliersRepository.create(newSupplier);
